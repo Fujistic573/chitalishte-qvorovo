@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти - НЧ "Пробуда" 1925г</title>
+    <link rel="stylesheet icon" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="logo"><img src="изтеглен файл.jpeg" alt="Лого"></a>
+        <nav class="navbar">
+            <a href="index.html">Начало</a>
+            <a href="history.html">История</a>
+            <a href="About_village.html">За с.Яворово</a>
+            <a href="contacts.html" class="active">Контакти</a>
+        </nav>
+        <div class="social-icons">
+            <ul class="skewed-social-icons">
+                <li><a href="https://www.facebook.com/profile.php?id=100002477344746" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/probuda1925/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header-container">
+            <h1>Свържете се с Нас</h1>
+        </div>
+
+        <form id="contactForm" class="contact-form fade-in">
+            <label for="name">Име и Фамилия</label>
+            <small class = "form- disclaimer">*Ако сте читалище или бизнес моля въведете името му.</small> 
+            <input type="text" id="name" name="name" placeholder="Вашето име" required>
+            
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="Вашият e-mail" required>
+            
+            <label for="message">Съобщение</label>
+            <textarea id="message" name="message" placeholder="Вашето съобщение..." style="height:150px" required></textarea>
+            
+            <button type="submit">Изпрати</button>
+        </form>
+    </main>
+        <div class="contact_info">
+            <h2>За Контакти:</h2>
+            <p>0889996666- Юлиана Ангелова- председател</p>
+            <p>0882255333- Марина Крумова- секретар</p>
+        </div>
+    
+    <footer class="site-footer-bottom">
+        <p>© 2024 НЧ "Пробуда" 1925г. Всички права запазени.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // This is the specific script for the contact form
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const button = form.querySelector('button');
+            button.textContent = 'Изпращане...';
+            button.disabled = true;
+
+            fetch('http://127.0.0.1:5000/send-email', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.status === 'success') {
+                    form.reset();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Възникна грешка. Моля, опитайте отново по-късно.');
+            })
+            .finally(() => {
+                button.textContent = 'Изпрати';
+                button.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+/* --- NEW VIBE: "MODERN HERITAGE" --- */
+
+/* 1. NEW TYPOGRAPHY: Lora for headings, Lato for body */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lora:wght@400;700&display=swap');
+
+/* 2. NEW COLOR PALETTE: Defined as CSS Variables for easy use */
+:root {
+    --bg-primary: #FBF9F3;          /* Warm Off-White */
+    --text-primary: #3D352E;        /* Dark Charcoal */
+    --accent-primary: #A4242F;      /* Heritage Red */
+    --accent-secondary: #D4A373;   /* Golden Ochre */
+    --header-bg: #ffffff;
+    --border-color: #e0dcd1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif; /* Default font for body text */
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7; /* Increased line spacing for readability */
+}
+
+/* --- Header & Navigation --- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 60px;
+    width: auto;
+}
+
+.navbar {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-family: 'Lora', serif; /* Use the heading font for nav links */
+    font-size: 18px;
+    font-weight: 700;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -2px;
+    left: 50%;
+    background-color: var(--accent-primary);
+    transition: all 0.4s ease-in-out;
+}
+
+.navbar a:hover, .navbar a.active {
+    color: var(--accent-primary);
+}
+
+.navbar a:hover::after, .navbar a.active::after {
+    width: 100%;
+    left: 0;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: var(--text-primary);
+    font-size: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent-secondary);
+    transform: translateY(-2px);
+}
+
+/* --- Main Content Area --- */
+main {
+    max-width: 1100px;
+    margin: 60px auto; /* More space from the header */
+    padding: 0 20px;
+}
+
+h1, h2 {
+    font-family: 'Lora', serif; /* Use the heading font */
+    color: var(--accent-primary);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* --- 3. NEW HERO SECTION --- */
+.hero-container {
+    text-align: center;
+    padding: 120px 40px;
+    /* CHOOSE A NEW BACKGROUND IMAGE HERE */
+    /* Example photo: https://images.pexels.com/photos/15220267/pexels-photo-15220267.jpeg */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('YOUR-NEW-IMAGE.jpg') no-repeat center center/cover;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.hero-container h1 {
+    font-size: 4rem; /* Larger font size */
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero-container p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* About Village & History Page */
+.content-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 50px;
+}
+
+.content-container img {
+    flex-shrink: 0;
+    width: 350px; /* Slightly larger image */
+    height: auto;
+    border-radius: 8px;
+    border: 5px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.content-container p {
+    font-size: 1.1rem;
+}
+
+/* Contacts Page Form */
+.contact-form {
+    background: var(--header-bg);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid var(--border-color);
+    margin-top: 50px;
+}
+
+.contact-form h2 {
+    text-align: center;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-secondary);
+    box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.2);
+}
+
+.contact-form button {
+    background-color: var(--accent-primary);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    width: 100%; /* Full-width button */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+    background-color: #821c25; /* Darker red on hover */
+    transform: translateY(-2px);
+}
+/* --- START: 3D Skewed Social Media Icons --- */
+/* --- Adapted from your design to fit the header --- */
+
+/* We target the specific list inside our .social-icons div */
+.skewed-social-icons {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.skewed-social-icons li {
+  list-style: none;
+  /* Adjusted margin for better spacing inside the header */
+  margin: 0 15px; 
+}
+
+.skewed-social-icons li a {
+  position: relative; /* Changed from absolute */
+  display: inline-block;
+  width: 50px; /* Increased size for a better effect */
+  height: 50px;
+  background: #fff;
+  text-align: center;
+  
+  transition: 0.5s;
+ 
+  color: var(--text-primary);
+}
+
+.skewed-social-icons li a:hover {
+  
+  box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* The 3D effect elements */
+
+
+
+
+
+/* The icon itself */
+.skewed-social-icons li a [class *= "fa-"] {
+  font-size: 24px;
+  line-height: 50px; /* Center icon vertically */
+  transition: 0.5s;
+}
+
+/* Icon color change on hover */
+.skewed-social-icons li:hover a [class *= "fa-"] {
+  color: #fff;
+}
+
+
+/* Facebook (is the 1st child) */
+.skewed-social-icons li:nth-child(1):hover a { 
+  background: #3b5998; 
+  border-color: #3b5998;
+}
+
+/* Instagram (is now the 2nd child) - with GRADIENT color! */
+.skewed-social-icons li:nth-child(2):hover a {
+  /* The famous Instagram gradient */
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+  border-color: transparent; /* Hide the border to show the gradient fully */
+}
+/* ======================= ENHANCEMENTS FOR INDEX PAGE ======================= */
+
+/* Hero Section Refinements */
+.hero-container {
+    padding: 0; /* Remove old padding */
+    height: 70vh; /* Make it take 70% of the viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* --- FIND A NEW BACKGROUND IMAGE --- */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('yavorovo_landscape.jpg') no-repeat center center/cover;
+    position: relative;
+}
+
+.hero-text {
+    text-align: center;
+    /* Animation for the text */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn-up 1s ease-out 0.5s forwards;
+}
+
+@keyframes fadeIn-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    color: white;
+}
+
+.hero-text p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+}
+
+/* New Hero Button Style */
+.btn-hero {
+    background-color: var(--accent-primary);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-hero:hover {
+    background-color: var(--accent-secondary);
+    color: var(--text-primary);
+    transform: translateY(-3px);
+}
+
+/* New Intro Cards Section */
+.intro-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 60px 0;
+}
+
+.card {
+    background: var(--header-bg);
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+    overflow: hidden; /* Important for the image */
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.card h2 {
+    margin: 20px 0 10px 0;
+}
+
+.card p {
+    padding: 0 20px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.btn-card {
+    display: inline-block;
+    background-color: var(--bg-primary);
+    color: var(--accent-primary);
+    border: 2px solid var(--border-color);
+    padding: 10px 25px;
+    margin-bottom: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-card:hover {
+    background-color: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+
+/* New Footer */
+.site-footer-bottom {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* JavaScript Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ======================= STYLES FOR INNER PAGES ======================= */
+
+.page-header-container {
+    padding: 60px    20px;
+    text-align: center;
+    background-color: #edeae4; /* A soft, complementary background */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-header-container h1 {
+    font-size: 3rem;
+    color: var(--accent-primary);
+    margin:  0;
+}
+/* --- Style for the form disclaimer text --- */
+.form-disclaimer {
+    display: block; /* Makes it take its own line */
+    font-size: 0.4rem; /* A bit smaller than the regular text */
+    color: #ce1010; /* A lighter, grey color to make it less prominent */
+    margin-bottom: 5px; /* Adds some space between it and the input field */
+    font-weight: normal;
+    /* Ensures it's not bold */
+}
+/* --- Additional Contact Info Section --- */
+.contact_info {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: var(--header-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid var(--border-color);
+}
