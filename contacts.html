@@ -67,7 +67,7 @@
             button.textContent = 'Изпращане...';
             button.disabled = true;
 
-            fetch('http://127.0.0.1:5000/send-email', {
+            fetch('https://yavorovo-backend.onrender.com/send-email', {
                 method: 'POST',
                 body: formData
             })
